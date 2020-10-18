@@ -46,7 +46,14 @@ check_runlevel();
 // 全站的设置数据，站点名称，描述，关键词
 // $setting = kv_get('setting');
 
-$route = param(0, 'index');
+// 定义外部数据共享的系统级别路由
+if(isset($_SERVER["BBS_SYSTEM_ROUTE"])) 
+{
+	$route=$_SERVER["BBS_SYSTEM_ROUTE"];
+	unset($_SERVER["BBS_SYSTEM_ROUTE"]);	
+}
+else $route = param(0, 'index');
+//$route = param(0, 'index');
 
 // hook index_inc_route_before.php
 
@@ -60,11 +67,12 @@ if(!defined('SKIP_ROUTE')) {
 		case 'thread':	include _include(APP_PATH.'route/thread.php'); 	break;
 		case 'forum': 	include _include(APP_PATH.'route/forum.php'); 	break;
 		case 'user': 	include _include(APP_PATH.'route/user.php'); 	break;
-		case 'my': 	include _include(APP_PATH.'route/my.php'); 	break;
+		case 'my': 	    include _include(APP_PATH.'route/my.php'); 	    break;
 		case 'attach': 	include _include(APP_PATH.'route/attach.php'); 	break;
 		case 'post': 	include _include(APP_PATH.'route/post.php'); 	break;
 		case 'mod': 	include _include(APP_PATH.'route/mod.php'); 	break;
 		case 'browser': include _include(APP_PATH.'route/browser.php'); break;
+		case 'sys':     include _include(APP_PATH.'route/sys.php');     break;
 		// hook index_route_case_end.php
 		default: 
 			// hook index_route_case_default.php

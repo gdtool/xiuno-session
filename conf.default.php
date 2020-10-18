@@ -83,7 +83,8 @@ return array (
 	'runlevel_reason' => 'The site is under maintenance, please visit later.',
 	
 	'cookie_domain' => '',
-	'cookie_path' => '',
+	// 修改cookie 存放地址
+	'cookie_path' => '/',
 	'auth_key' => 'efdkjfjiiiwurjdmclsldow753jsdj438',
 	
 	'pagesize' => 20,
